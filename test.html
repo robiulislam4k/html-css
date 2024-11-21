@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignUp</title>
+  <style>
+    /* General body styling */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url(/pics.JPG);
+      background-size: cover;
+      width: 1920px;
+      height: 800px;
+
+    }
+
+    /* Form container styling */
+    form {
+    margin-right: 300px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 300px;
+      opacity: 70;
+      border-radius: 30px;
+    }
+
+    /* Input field styling */
+    input, select, button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    /* Button styling */
+    button {
+      background-color: #ffc107;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #e0a800;
+    }
+  </style>
+</head>
+<body>
+  <form id="signupForm">
+    <h2>Sign Up</h2>
+    <input type="text" id="firstName" placeholder="Enter Your First Name">
+    <input type="text" id="lastName" placeholder="Enter Your Last Name">
+    <input type="email" id="email" placeholder="Enter Your Email">
+    <input type="password" id="password" placeholder="Enter Password">
+    <select id="workAs">
+      <option value="">--Work As--</option>
+      <option value="Doctor">Doctor</option>
+      <option value="Engineer">Engineer</option>
+      <option value="Teacher">Teacher</option>
+    </select>
+    <button type="button" id="signupButton" class="w-full">Sign Up</button>
+  </form>
+
+  <script>
+    document.getElementById('signupButton').addEventListener('click', function () {
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const workAs = document.getElementById('workAs').value;
+
+      // Validate all fields
+      if (!firstName || !lastName || !email || !password || !workAs) {
+        alert('Please fill out all required fields.');
+        return;
+      }
+
+      
+      window.location.href = 'login.html'; 
+    });
+  </script>
+</body>
+</html>
