@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Creation</title>
+  <style>
+    body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fdf5e6;
+}
+
+.task-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  background-color: #a0522d;
+  color: black;
+   height: 100vh; 
+}
+
+.task-details, .task-description {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 48%;
+}
+.task-details{
+    text-align: center;
+    margin-top: 50px;
+    
+}
+.task-description{
+   text-align: center; 
+   margin-top: 50px;
+}
+
+.task-details h2, .task-details h3, .task-description h3 {
+  color: black;
+}
+
+.icon {
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.status {
+  display: inline-block;
+  background-color: #d2b48c;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #8b5a2b;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #a0522d;
+}
+
+.task-description p {
+  background-color: rgba(0, 0, 0, 0.521);
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  width: 400px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="task-container">
+    <div class="task-details">
+      <h2>Task Name : <span id="task-name">LogIn</span></h2>
+      <h3>Task Details</h3>
+      <p><strong>Assignee:</strong> <span id="assignee">Sadman</span> <span class="icon">👤</span></p>
+      <p><strong>Task Status:</strong> <span class="status">TO DO</span></p>
+      <button id="create-btn">Create</button>
+    </div>
+    <div class="task-description">
+      <h3>Description</h3>
+      <p>Lorem Ipsum is simply dummy text of <br>the printing and typesetting <br> Lorem Ipsum has been the industry's standard <br> dummy text ever since the 1500s, <br> when an unknown printer took a galley <br> of type and scrambled it to make a <br> type specimen book. It has survived <br> not only five centuries, but also the <br> leap into electronic...</p>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const createBtn = document.getElementById("create-btn");
+
+  createBtn.addEventListener("click", () => {
+    const taskName = document.getElementById("task-name").textContent;
+    const assignee = document.getElementById("assignee").textContent;
+    const status = document.querySelector(".status").textContent;
+
+    const taskDetails = {
+      taskName,
+      assignee,
+      status,
+    };
+
+    console.log("Task Created:", taskDetails);
+    alert("Task successfully created!");
+  });
+});
+
+  </script>
+</body>
+</html>
