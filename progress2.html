@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create New Project</title>
+ <style>
+    /* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fdf5e6;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  background-color: #8b5a2b;
+  color: #fff;
+  padding: 20px;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar h1 {
+  margin-bottom: 20px;
+}
+
+.sidebar button {
+  background-color: #d2b48c;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.sidebar button:hover {
+  background-color: #c19a6b;
+}
+
+/* Main Content Styles */
+.main {
+  flex: 1;
+  padding: 40px;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+header h2 {
+  color: #8b5a2b;
+}
+
+.form-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #8b5a2b;
+}
+
+.form-field input, .form-field textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+/* Assignee Dropdown Styles */
+.assignee-dropdown {
+  position: relative;
+}
+
+#assignee-search {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.assignee-list {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-height: 150px;
+  overflow-y: auto;
+  display: none;
+  z-index: 10;
+}
+
+.assignee-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.assignee-item:hover {
+  background-color: #f0e68c;
+}
+
+/* Button Styles */
+#submit-btn {
+  background-color: #8b5a2b;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#submit-btn:hover {
+  background-color: #a0522d;
+}
+
+ </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h1>TrackIT</h1>
+      <button>DashBoard</button>
+      <button>LeaderBoard</button>
+      <button>Profile</button>
+    </div>
+    <div class="main">
+      <header>
+        <h2>Creating A New Project</h2>
+      </header>
+      <div class="form-container">
+        <div class="form-field">
+            <label class="block text-lg font-bold mb-2">Project Name</label>
+            <p class="ml-5 font-bold ">Task Track</p>
+        </div>
+        <div class="form-field">
+          <label for="summary">Summary</label>
+          <input type="text" id="summary" placeholder="Enter summary">
+        </div>
+        <div class="form-field">
+          <label for="description">Description</label>
+          <textarea id="description" placeholder="Enter description"></textarea>
+        </div>
+        <div class="form-field">
+          <label for="reporter">Reporter</label>
+          <input type="text" id="reporter" value="Prapti Mojumder" disabled>
+        </div>
+        <div class="form-field">
+          <label for="assignee">Assignee</label>
+          <div class="assignee-dropdown">
+            <input type="text" id="assignee-search" placeholder="Search assignee">
+            <div class="assignee-list">
+              <div class="assignee-item">Sadman Sakib</div>
+              <div class="assignee-item">Prapti Mojumder</div>
+            </div>
+          </div>
+        </div>
+        <button id="submit-btn">Create Project</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  // Handle Assignee Search Dropdown
+  const assigneeSearch = document.getElementById("assignee-search");
+  const assigneeList = document.querySelector(".assignee-list");
+
+  assigneeSearch.addEventListener("focus", () => {
+    assigneeList.style.display = "block";
+  });
+
+  assigneeSearch.addEventListener("input", () => {
+    const filter = assigneeSearch.value.toLowerCase();
+    const items = document.querySelectorAll(".assignee-item");
+
+    items.forEach((item) => {
+      if (item.textContent.toLowerCase().includes(filter)) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".assignee-dropdown")) {
+      assigneeList.style.display = "none";
+    }
+  });
+
+  // Handle Assignee Selection
+  assigneeList.addEventListener("click", (e) => {
+    if (e.target.classList.contains("assignee-item")) {
+      assigneeSearch.value = e.target.textContent;
+      assigneeList.style.display = "none";
+    }
+  });
+
+  // Handle Form Submission
+  const submitBtn = document.getElementById("submit-btn");
+
+  submitBtn.addEventListener("click", () => {
+    const projectName = document.getElementById("project-name").value;
+    const summary = document.getElementById("summary").value;
+    const description = document.getElementById("description").value;
+    const reporter = document.getElementById("reporter").value;
+    const assignee = assigneeSearch.value;
+
+    if (!summary || !description || !assignee) {
+      alert("Please fill out all fields before creating the project.");
+      return;
+    }
+
+    const projectData = {
+      projectName,
+      summary,
+      description,
+      reporter,
+      assignee,
+    };
+
+    console.log("Project Created:", projectData);
+    alert("Project successfully created!");
+
+    // Clear the form after submission
+    document.getElementById("summary").value = "";
+    document.getElementById("description").value = "";
+    assigneeSearch.value = "";
+  });
+});
+
+  </script>
+</body>
+</html>

@@ -5,18 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TrackIT Profile</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+
+  </style>
 </head>
 <body class=" text-white" style="background-image: url('/pngtree-business-person-standing-near-a-blank-billboard-clear-information-poster-photo-image_7082064.jpg');">
   <div class="flex h-screen">
     <!-- Sidebar -->
-    <div class="w-1/4 bg-[#258a437d] p-6">
-      <h1 class="text-3xl font-bold mb-10 text-[#FFECC9]">TrackIT</h1>
-      <ul class="space-y-4">
-        <li><button id="myButton" class="w-full py-2 text-left bg-[#D6E8CC] text-[#6C3B17] rounded-lg px-4">DashBoard</button></li>
-        <li><button class="w-full py-2 text-left bg-[#D6E8CC] text-[#6C3B17] rounded-lg px-4">LeaderBoard</button></li>
-        <li><button class="w-full py-2 text-left bg-[#D6E8CC] text-[#6C3B17] rounded-lg px-4">Profile</button></li>
-      </ul>
-    </div>
+    <aside class="w-80 bg-white text-white p-5">
+      <h1  class="text-4xl font-bold mb-10 ml-12 text-black ">TrackIT</h1>
+      <nav>
+        <ul>
+          <li class="mb-4">
+            <button class=" w-56 bg-stone-200 text-black py-3 rounded-xl">DashBoard</button>
+          </li>
+          <li class="mb-4">
+            <button class="w-56 bg-stone-200 text-black py-3 rounded-xl">LeaderBoard</button>
+          </li>
+          <li>
+            <button id="profileWork" class="w-56 bg-stone-200 text-black py-3 rounded-xl">Profile</button>
+          </li>
+        </ul>
+      </nav>
+    </aside>
 
     <!-- Profile Section -->
     <div class="w-3/4 p-10">
@@ -42,7 +53,7 @@
       <div class="mt-12">
         <h3 class="text-2xl font-bold mb-4">About</h3>
         <div class="space-y-4 bg-[#eae5e3e4] p-6 rounded-lg">
-          <div class="flex justify-between">
+          <div class="flex justify-between" id="">
             <span class="font-semibold text-black">Department</span>
             <span class="text-black" >Computer Science and Engineering</span>
           </div>
